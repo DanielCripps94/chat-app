@@ -4,35 +4,41 @@ import { Link } from 'react-router-dom'
 
 class Register extends React.Component {
     state = {
+        username: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '' 
 
     }
 
-    handleChange = () => {
-
+    handleOnChange = event => {
+        this.setState({ [event.target.name]: event.target.value})
     }
     render() {
+
+        const {username, email, password, passwordConfirmation} = this.state
         return(
-            <Grid textAlign='center' verticalAlign='middle'>
+            <Grid className='app'textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450}}>
-                    <Header as='h2' icon color='Black' textAlign='center'>
-                        <Icon name='puzzle piece' color='Black'/>
-                        Register for ChatBox
+                    <Header as='h2' icon color='teal' textAlign='center'>
+                        <Icon name='user secret' color='teal'/>
+                        ChatBox Sign Up
                     </Header>         
                     <Form size='large'>
                         <Segment stacked>
                             <Form.Input fluid name='username' icon='user' iconPosition='left' 
-                            placeholder='Username' onChange={this.handleOnChange} type='text'/>
+                            placeholder='Username' onChange={this.handleOnChange} type='text' value={username}/>
                             
                             <Form.Input fluid name='email' icon='mail' iconPosition='left' 
-                            placeholder='Email Address' onChange={this.handleOnChange} type='email'/>
+                            placeholder='Email Address' onChange={this.handleOnChange} type='email' value={email}/>
 
                             <Form.Input fluid name='password' icon='lock' iconPosition='left' 
-                            placeholder='Password' onChange={this.handleOnChange} type='password'/>
+                            placeholder='Password' onChange={this.handleOnChange} type='password'value={password}/>
 
                             <Form.Input fluid name='passwordConfirmation' icon='repeat' iconPosition='left' 
-                            placeholder='Password Confirmation' onChange={this.handleOnChange} type='password'/>
+                            placeholder='Password Confirmation' onChange={this.handleOnChange} type='password' value={passwordConfirmation}/>
 
-                            <Button color='black' fluid size='large'>Submit</Button>
+                            <Button color='teal' fluid size='large'>Submit</Button>
                         </Segment>
                     </Form>
                     <Message>Are you already a user? <Link to='/login'>Login</Link></Message>          
