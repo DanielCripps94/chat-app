@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Header, Message, Icon, Form, Segment, Button,  } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+// import firebase from '../firebase'
 
 class Register extends React.Component {
     state = {
@@ -8,15 +9,20 @@ class Register extends React.Component {
         email: '',
         password: '',
         passwordConfirmation: '' 
-
     }
 
     handleOnChange = event => {
         this.setState({ [event.target.name]: event.target.value})
     }
+
+    handleSubmit = event => {
+        event.preventDefault()
+    }
+
     render() {
 
         const {username, email, password, passwordConfirmation} = this.state
+
         return(
             <Grid className='app'textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450}}>
@@ -24,7 +30,7 @@ class Register extends React.Component {
                         <Icon name='user secret' color='teal'/>
                         ChatBox Sign Up
                     </Header>         
-                    <Form size='large'>
+                    <Form onSubmit={this.handleSubmit} size='large'>
                         <Segment stacked>
                             <Form.Input fluid name='username' icon='user' iconPosition='left' 
                             placeholder='Username' onChange={this.handleOnChange} type='text' value={username}/>
